@@ -2,39 +2,22 @@ import java.io.IOException;
 import java.net.URI;
 
 class Handler implements URLHandler {
-    // The one bit of state on the server: a number that will be manipulated by
-    // various requests.
-    List<String> str = new ArrayList<>();
+    String str;
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return "Strings" + str.toString();
+            return str;
         } 
-        if else {
-            System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/add")) {
-                String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("s")) {
-                    str.add(parameters[1]);
-                    return String.format("String %s added! THe list is now %s", str.toString());
-                }
-            }
-        }
         else {
             System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/search")) {
+            if (url.getPath().contains("/add-message")){
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
-                    List<String> answers = new ArrayList<>();
-                    for (int i = 0; i < str.length; i++) {
-                        if (str.get(i) == parameters[1]) {
-                            answers.add(str.get(i));
-                        }
-                    }
-                    return String.format("Strings %s found!", answers.toString());
+                    str += "\n" + parameters[1];
+                    return str;
                 }
             }
-            return "404 Not Found!";
+            return "404 Not Found";
         }
     }
 }
