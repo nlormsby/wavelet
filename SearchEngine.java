@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.net.URI;
 
 class Handler implements URLHandler {
-    String str;
+    String str = "";
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
