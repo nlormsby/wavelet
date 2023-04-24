@@ -22,8 +22,6 @@ class Handler implements URLHandler {
     }
 }
 
-
-
 class SearchEngine {
     public static void main(String[] args) throws IOException {
         if(args.length == 0){
